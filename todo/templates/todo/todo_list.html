@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+<!-- <body>
+    <h2>Welcome, {{ user.username }}</h2>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search todos..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+    <a href="{% url 'logout' %}">Logout</a>
+    <div>
+        {% for i in todo %}
+        <h2>{{i.title}}</h2>
+        <h2>{{i.description}}</h2>
+        <h2>{{i.completed|yesno:"Completed,Not Completed" }}</h2>
+        <a href = '{% url "todo_update" i.id %}'>update</a>
+        <a href = '{% url "todo_delete" i.id %}'>delete</a>
+        {% endfor %}
+        <hr>
+        <a href = '{% url "todo_create" %}' >create task</a>
+    </div>
+</body> -->
+<body style="background-color: #f8f9fa;">
+    <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); background-color: white;">
+        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Welcome, {{ user.username }}</h2>
+        <form method="get" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <input type="text" name="q" placeholder="Search todos..." value="{{ request.GET.q }}" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;" />
+            <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Search</button>
+        </form>
+        <a href="{% url 'logout' %}" style="display: block; text-align: center; color: #007bff; text-decoration: none; margin-bottom: 20px;">Logout</a>
+        <div>
+            {% for i in todo %}
+                <div style="border-bottom: 1px solid #eee; padding: 10px 0; margin-bottom: 10px;">
+                    <h3 style="color: #333; margin: 5px 0; font-size: 18px;">{{ i.title }}</h3>
+                    <p style="color: #555; margin: 5px 0; font-size: 16px;">{{ i.description }}</p>
+                    <p style="color: {% if i.completed %}green{% else %}red{% endif %}; margin: 5px 0; font-size: 16px;">{{ i.completed|yesno:"Completed,Not Completed" }}</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="{% url 'todo_update' i.id %}" style="color: #007bff; text-decoration: none;">Update</a>
+                        <a href="{% url 'todo_delete' i.id %}" style="color: #dc3545; text-decoration: none;">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+            <hr style="border: 1px solid #ccc; margin: 20px 0;">
+            <a href="{% url 'todo_create' %}" style="display: block; text-align: center; color: #007bff; text-decoration: none; font-size: 16px;">Create Task</a>
+        </div>
+    </div>
+</html>
